@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+td {
+    background-color: #121212;
+    padding: 10px;
+    color: #ffffff;
+    vertical-align: middle;
+    border: none;
+}
+
+.nombre {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.mat-mdc-table .mat-mdc-header-cell {
+    background: #121212;
+    color: white;
+}
+
+.nomMusic {
+    font-size: 18px; 
+    font-style: italic;
+}
+p.nomAlbum, p.tiempo, p.nomArtists {
+        font-size: 13px;
+}
+.mat-mdc-card {
+    position: relative;
+    background-color: #121212;
+}

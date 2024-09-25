@@ -1,0 +1,38 @@
+.wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-message {
+    padding: 20px;
+    text-align: center;
+}
+
+.hero-message-container {
+    text-align: center;
+}
+
+span {
+
+    color: springgreen;
+    font-size: xxx-large;
+    font-size: xxx-large;
+
+}
+
+h1 {
+    font: 400 24px/32px Roboto, sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+}
+
+.hero-banner {
+    background-image: url('../../../assets/img/banner.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 100px 0;
+    text-align: center;
+}

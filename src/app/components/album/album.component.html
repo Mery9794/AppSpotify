@@ -1,0 +1,58 @@
+<!-- album.component.html -->
+<div>
+  <h1>Top 10 Álbumes</h1>
+</div>
+
+<!-- Contenedor general -->
+<div class="albums-container">
+  <!-- Álbum seleccionado -->
+  <div *ngIf="selectedAlbum" class="album-selec" (click)="toggleSelection(selectedAlbum)">
+    <h2>Detalles del Álbum Seleccionado</h2>
+    <div class="details-content">
+      <div class="details-image">
+        <img [src]="selectedAlbum.images[0]?.url || 'assets/no-image.png'" alt="{{ selectedAlbum.name }}" class="img-fluid selected-album-image">
+      </div>
+      <div class="details-info">
+        <h3>{{ selectedAlbum.name }}</h3>
+        <p>Artista: {{ selectedAlbum.artists[0]?.name || 'No disponible' }}</p>
+        <p>Fecha de lanzamiento: {{ selectedAlbum.release_date }}</p>
+        <p>Cantidad de canciones: {{ selectedAlbum.total_tracks || 'No disponible' }}</p>
+
+        <!-- Lista de canciones (temas) -->
+        <h4>Temas del álbum:</h4>
+        <ul *ngIf="albumTracks.length > 0; else noTracks">
+          <li *ngFor="let track of albumTracks">
+            {{ track.track_number }}. {{ track.name }}
+            <iframe [src]="selectedAlbum.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true"
+            allow="encrypted-media"></iframe>
+          </li>
+        </ul>
+        
+        <ng-template #noTracks>
+          <p>No hay canciones disponibles para este álbum.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <!-- Álbumes en tarjetas -->
+  <div class="row g-3 justify-content-center align-items-center">
+    <ng-container *ngFor="let item of items | slice:0:10">
+      <div
+        class="col-12 col-md-2 mb-4"
+        [ngClass]="{ 'selected-album-card': selectedAlbum === item }"
+        (click)="toggleSelection(item)"
+      >
+        <mat-card class="puntero tarjeta-animada spotify-card">
+          <img mat-card-image [src]="item.images[0]?.url || 'assets/no-image.png'" alt="{{ item.name }}" class="img-fluid">
+          <mat-card-content>
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">
+              <span class="badge badge-pill badge-danger">{{ item.release_date | date:'yyyy' }}</span>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.navbar.navbar-expand-md{
+    
+    background-color: #121212;
+}
+
+a.navbar-brand {
+    color: white;
+}
+a.nav-link {
+    color: white;
+}
+
+@media (max-width: 767px) {
+    .navbar-brand {
+        margin-right: 0; 
+    }
+
+    .navbar-toggler {
+        margin-right: 10px;
+    }
+    
+}
+ 

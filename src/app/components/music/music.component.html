@@ -1,0 +1,52 @@
+<div>
+    <h1>Top 10 Canciones</h1>
+</div>
+
+<!-- Listado de canciones -->
+<table mat-table class="mat-elevation-z8" [dataSource]="items">
+ 
+    <!-- Columna de Título -->
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef># Título</th>
+        <td mat-cell *matCellDef="let item" (click)="verCancion(item)" class="nombre">{{item.name}}</td>
+    </ng-container>
+
+    <!-- Columna de Seleccionar -->
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>Seleccionar</th>
+        <td mat-cell *matCellDef="let item">
+            <mat-checkbox (change)="toggleSelection(item)" [(ngModel)]="item.selected"></mat-checkbox>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['title', 'select']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['title', 'select']"></tr>
+
+</table>
+
+<!-- Sección para mostrar detalles de la canción seleccionada -->
+<div *ngIf="selectedSong">
+    <h2>Detalles de la Canción</h2>
+    <div class="detalles">
+        <iframe [src]="selectedSong.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true"
+            allow="encrypted-media"></iframe>
+        <h3>{{selectedSong.name}}</h3>
+        <p>Álbum: {{selectedSong.album.name}}</p>
+        <p>Duración: {{ duracion(selectedSong.duration_ms) }}</p>
+    </div>
+</div>
+
+<!-- Sección para mostrar las portadas de las canciones seleccionadas -->
+<div *ngIf="selectedSongs.length > 0" class="music-selec">
+    <h2>Musicas favoritas</h2>
+    <div class="selected-songs">
+        <mat-card *ngFor="let song of selectedSongs" class="musicSelec">
+            <p class="nomMusic">Canción: {{ song.name }}</p>
+            <p class="nomArtists"> • Artistas: {{ getArtistsNames(song.artists) }}</p>
+            <p class="nomAlbum"> • Álbum: {{ song.album.name }}</p>
+            <p class="tiempo"> • Duración: {{ duracion(song.duration_ms) }}</p>
+        </mat-card>
+    </div>
+</div>
+
+

@@ -1,0 +1,27 @@
+<section class="hero-banner">
+    <div class="row artist-info-container animated fadeIn" *ngIf="!loading">
+        <!-- Columna para la imagen del artista -->
+        <div class="col-12 artist-image mb-3">
+            <img [src]="artista.images | noimage" alt="" class="img-fluid">
+            <!-- Nombre del artista sobre la imagen -->
+            <h1>{{artista.name}}</h1>
+        </div>
+        <!-- Botón de regreso al buscador en la esquina superior izquierda -->
+        <div class="col-12 text-left">
+            <button (click)="goBack()"  class="btn back-button">
+                <i class="fa-solid fa-circle-chevron-left fa-xl" style="color: #171717;"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="card-container pb-5">
+            <!-- Top 10 álbumes del artista -->
+            <app-album [items]="albunes"></app-album>
+            <!-- Top 10 canciones del artista -->
+            <app-music [items]="musicas"></app-music>
+        </div>
+    </div>
+</div>

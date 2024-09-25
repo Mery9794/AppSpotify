@@ -1,0 +1,24 @@
+<section class="hero-banner"> 
+    <div class="wrapper">
+        <div class="hero-message">
+            <div class="hero-message-container">
+                <h1>LA <span>MUSICA</span> NOS UNE A TODOS</h1>
+                <h4>Encunetra tu música favorita y revive tus mejores momentos a través de ella.</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+    <h3>Error</h3>
+    <p>{{mensajeError}}</p>
+</div>
+<!--Se carga la lista de nuevos sensillos-->
+<div class="container pb-5">
+    <div class="card-container-new-releases">
+        <app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
+    </div>
+</div>
+

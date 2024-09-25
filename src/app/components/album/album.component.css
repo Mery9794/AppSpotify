@@ -1,0 +1,150 @@
+h1 {
+  margin-top: 16px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+h2 {
+  margin-top: 16px;
+}
+
+.puntero.tarjeta-animada.spotify-card {
+  background-color: #282828;
+  color: #FFFFFF;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; 
+}
+
+.puntero.tarjeta-animada.spotify-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.selected-album-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.album-details, .album-selec {
+  margin-top: 20px;
+}
+
+.album-selec {
+  padding-bottom: 40px;
+  background-color: #121212;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.details-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.details-image img {
+  max-width: 150px;
+  margin-right: 20px;
+}
+
+.details-info {
+  flex: 1;
+}
+
+/* Estilo para cuando el álbum está seleccionado */
+.selected-album-card {
+  opacity: 0.6;
+}
+
+.albums-container {
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.col-md-2 {
+  flex: 0 0 auto;
+  width: 19%;
+}
+
+.row-cols-md-5 .col-md-2 {
+  margin: 0 0.5%;
+}
+li.playing {
+  background-color: #f0f0f0;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+iframe {
+  border: 0;
+  display: block;
+}
+@media (max-width: 767px) {
+  .puntero.tarjeta-animada.spotify-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .puntero.tarjeta-animada.spotify-card img {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .spotify-card .card-content {
+    padding: 10px;
+  }
+
+  .spotify-card h5 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .spotify-card .badge {
+    font-size: 12px;
+  }
+
+  .selected-album-image {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+  }
+
+  .details-content {
+    flex-direction: column;
+  }
+
+  .details-image img {
+    max-width: 100px;
+    margin-right: 0;
+  }
+
+  .details-info {
+    margin-top: 10px;
+  }
+
+  /* Ajustar el ancho de los álbumes */
+  .col-md-2 {
+    width: 48%;  /* Para que dos tarjetas quepan en una fila */
+    margin-bottom: 15px;
+  }
+
+  .albums-container {
+    padding: 0 10px; 
+  }
+}
+
