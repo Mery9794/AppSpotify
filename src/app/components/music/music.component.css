@@ -14,7 +14,7 @@ td {
 
 .nombre {
     cursor: pointer;
-    text-decoration: underline;
+    font-family: 'FontAwesome';
 }
 
 .mat-mdc-table .mat-mdc-header-cell {
@@ -33,3 +33,14 @@ p.nomAlbum, p.tiempo, p.nomArtists {
     position: relative;
     background-color: #121212;
 }
+.heart-icon {
+    cursor: pointer;
+    font-size: 25px; 
+    color: grey;
+    transition: color 0.3s ease;
+  }
+  
+  .heart-icon.selected {
+    color: red;
+  }
+  

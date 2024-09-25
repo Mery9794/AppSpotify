@@ -1,27 +1,45 @@
 # SpotifyApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 17.1.1. La aplicación permite realizar búsquedas de artistas, visualizar detalles de álbumes y canciones utilizando la API de Spotify.
 
-## Development server
+## Funcionalidades del Proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Búsqueda de Artistas:** Puedes buscar cualquier artista a través de la API de Spotify y obtener información detallada como álbumes y canciones.
+2. **Detalles de Álbumes y Canciones:** Visualiza la lista de canciones y los detalles de cualquier álbum asociado a un artista seleccionado.
+3. **Autenticación mediante API de Spotify:** La autenticación se realiza mediante OAuth 2.0 utilizando Postman para generar tokens de acceso.
 
-## Code scaffolding
+## Tecnologías Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular Material:** Para el diseño de la interfaz y los componentes visuales.
+- **Spotify API:** Para obtener información sobre artistas, álbumes y canciones.
+- **Postman:** Para la autenticación y generación de tokens de acceso API de Spotify.
 
-## Build
+## Autenticación con Spotify
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+La autenticación para acceder a la API de Spotify se gestiona mediante **OAuth 2.0**. Utilizamos **Postman** para generar los tokens de acceso que luego son utilizados en las solicitudes HTTP dentro de la aplicación Angular.
 
-## Running unit tests
+### Pasos para la Autenticación en Postman
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Obtener Código de Autorización:**
+   - Realiza un `GET` con los siguientes parámetros:
+     - `client_id`
+     - `redirect_uri`
+     - `response_type: code`
+     - `scope: playlist-modify-public`
+   - Esto redirigirá a la página de autorización de Spotify, donde se obtiene un **Código de Autorización** que se deberá usar para obtener el token.
 
-## Running end-to-end tests
+2. **Generar Token de Acceso:**
+   - En Postman, se realiza un `POST` al endpoint `https://accounts.spotify.com/api/token` utilizando **OAuth 2.0** como tipo de autenticación.
+   - Incluyedo los siguientes parámetros en el cuerpo de la solicitud:
+     - `grant_type: authorization_code`
+     - `code: [El código de autorización obtenido]`
+     - `redirect_uri: [Tu URL de redirección]`
+     - `client_id: [Tu client ID]`
+     - `client_secret: [Tu client secret]`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Actualizar el Token en la Aplicación:**
+   - El token que se obtiene tiene una validez limitada (generalmente una hora).
+   - Se debe actualizar el token en el servicio de Angular (spotify.service.ts):
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ```typescript
+   private token = 'TOKEN_NUEVO';

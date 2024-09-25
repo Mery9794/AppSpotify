@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SpotifyService {
-  private token = 'BQAppAgfeHbaFLwnmXJzfAsADMhJKO-yAEH1ri56-PXyOPpCErzJO9PV-6GCle6oomHs_janyiXKzUsx5rJ_HEGGtCoBY1rmobCCuoj4ldBY6WNw142hXz7lVeSWKM-pdzB24pozsdJALHTiS4O8uzLAqLwP6h9xUsvfN8jKQGPaLIJ9p0qmh8BpLlsxQOBVUE1P6GRiwOmq2VvnehQ';
+  private token = 'BQAPR0C9MqkAjyJUxuhqJ00zf-dki_KsN6y-BNLE15OK3uH5WumYjTUsxg7dTCs-VjqFEsS7VG8ehI4e4k-fn2OsPyx4cf40Es_b90NcXTCKlGmcBV1OEUWaHPBYO2fXFiZzbg0uTfnIkFcDEL_m_QmZktm95KqRGjTX1IVQmGrQX27ZkChFt3QDk6BoV5vfp3EN9WlQs5UTTL_WE7I';
   private discosFicticiosSubject = new BehaviorSubject<any[]>([]);
 
   constructor(private http: HttpClient) {
